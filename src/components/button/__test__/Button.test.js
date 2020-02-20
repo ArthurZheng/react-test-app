@@ -12,13 +12,13 @@ describe("tests the button component", () => {
     console.log(tree.debug());
   });
 
-  it("renders without crashing", () => {
+  xit("renders without crashing", () => {
     // this is the old way of smoke test;
     const div = document.createElement("div");
     ReactDOM.render(<Button></Button>, div);
   });
 
-  it("renders without crashing", () => {
+  xit("renders without crashing", () => {
     const { getByTestId } = render(<Button label="click me please" />);
     expect(getByTestId("button")).toHaveTextContent("click me please");
   });
@@ -28,7 +28,17 @@ describe("tests the button component", () => {
     expect(getByTestId("button")).toHaveTextContent("save");
   });
 
-  it("matches snapshot", () => {
+  xit("renders without crashing", () => {
+    const { getByTestId } = render(<Button label="happy friday" />);
+    expect(getByTestId("button")).toHaveTextContent("happy friday");
+  });
+
+  it("matches snapshot 1", () => {
+    const tree = render(<Button label="Voila!" />);
+    expect(tree).toMatchSnapshot();
+  });
+
+  it("matches snapshot 2", () => {
     const tree = render(<Button label="Voila!" />);
     expect(tree).toMatchSnapshot();
   });
