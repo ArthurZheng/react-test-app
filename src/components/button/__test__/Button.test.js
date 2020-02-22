@@ -1,5 +1,6 @@
 import React from "react";
 import { render, cleanup } from "@testing-library/react";
+import { shallow } from 'enzyme';
 
 import ReactDOM from "react-dom";
 import Button from "../Button";
@@ -42,4 +43,15 @@ describe("tests the button component", () => {
     const tree = render(<Button label="Voila!" />);
     expect(tree).toMatchSnapshot();
   });
+
+  it('renders without crashing (shallow rendering)', () => {
+    shallow(<Button />);
+  });
+
+  it('renders welcome message', () => {
+      const wrapper = shallow(<Button label="hello world!" />);
+      const helloWorld = "hello world!";
+      expect(wrapper.contains(helloWorld)).toBe(true);
+  });
+  
 });
