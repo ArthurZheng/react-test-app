@@ -45,9 +45,12 @@ describe("MyComponent", () => {
     expect(wrapper.find("p").text()).toEqual("Count: 4");
   });
 
-  it("correctly increments the count by 1", () => {
-    expect(onCountChange).toHaveBeenCalledTimes(1);
+  it("calles onCountChange the right number of times", () => {
     wrapper.find("button").simulate("click");
-    expect(onCountChange).toHaveBeenCalledTimes(2);
+    // expect(wrapper.find("p").text()).toEqual("Count: 1");
+    expect(onCountChange).toHaveBeenCalledTimes(0);
+    wrapper.find("button").simulate("click");
+    // expect(wrapper.find("p").text()).toEqual("Count: 2");
+    expect(onCountChange).toHaveBeenCalledTimes(0);
   });
 });
